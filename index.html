@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Portfolio</title>
+
+<style>
+:root {
+  --bg:#07111f;
+  --bg-soft:#0d1b2e;
+  --panel:#10233a;
+  --panel-2:#132b45;
+  --text:#e5eefb;
+  --muted:#94a9c9;
+  --line:rgba(148,169,201,0.16);
+  --accent:#38bdf8;
+  --accent-2:#0ea5e9;
+  --success:#22c55e;
+  --shadow:0 20px 50px rgba(0,0,0,0.35);
+}
+
+* {
+  box-sizing:border-box;
+}
+
+html {
+  scroll-behavior:smooth;
+}
+
+body {
+  margin:0;
+  font-family:'Poppins',sans-serif;
+  background:
+    radial-gradient(circle at top left, rgba(56,189,248,0.16), transparent 28%),
+    radial-gradient(circle at 80% 20%, rgba(14,165,233,0.10), transparent 22%),
+    linear-gradient(180deg, #08111d 0%, #0b1627 100%);
+  color:var(--text);
+}
+
+nav {
+  position:fixed;
+  width:100%;
+  top:0;
+  left:0;
+  padding:16px 28px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  background:rgba(2,6,23,0.72);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid rgba(56,189,248,0.10);
+  z-index:1000;
+}
+
+nav h2 {
+  margin:0;
+  color:var(--accent);
+  font-size:24px;
+  letter-spacing:0.5px;
+}
+
+nav div {
+  display:flex;
+  gap:22px;
+  flex-wrap:wrap;
+}
+
+nav a {
+  color:var(--text);
+  text-decoration:none;
+  font-size:15px;
+  transition:0.25s;
+}
+
+nav a:hover {
+  color:var(--accent);
+}
+
+.center-box {
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:24px;
+}
+
+.container {
+  width:380px;
+  max-width:100%;
+  padding:28px;
+  background:rgba(16,35,58,0.92);
+  border:1px solid var(--line);
+  border-radius:20px;
+  box-shadow:var(--shadow);
+}
+
+.container h2 {
+  margin:0 0 18px;
+  color:var(--accent);
+  text-align:center;
+}
+
+input,
+button {
+  width:100%;
+  padding:12px 14px;
+  margin:10px 0;
+  border-radius:10px;
+  border:none;
+  font-size:15px;
+}
+
+input {
+  background:#0a1728;
+  color:var(--text);
+  border:1px solid rgba(148,169,201,0.14);
+  outline:none;
+}
+
+input::placeholder {
+  color:#6f86a8;
+}
+
+button {
+  background:linear-gradient(135deg, var(--accent), var(--accent-2));
+  color:#03111c;
+  cursor:pointer;
+  font-weight:700;
+}
+
+.hidden {
+  display:none;
+}
+
+.hero {
+  min-height:100vh;
+  max-width:1150px;
+  margin:auto;
+  padding:120px 40px 70px;
+  display:grid;
+  grid-template-columns:1.1fr 0.9fr;
+  gap:40px;
+  align-items:center;
+}
+
+.hero-left {
+  max-width:560px;
+}
+
+.hero-tag {
+  display:inline-block;
+  margin-bottom:18px;
+  padding:8px 14px;
+  border:1px solid rgba(56,189,248,0.20);
+  border-radius:999px;
+  color:var(--accent);
+  background:rgba(56,189,248,0.08);
+  font-size:13px;
+  letter-spacing:0.4px;
+}
+
+.hero h1 {
+  margin:0 0 14px;
+  font-size:56px;
+  line-height:1.08;
+}
+
+.hero h1 span {
+  color:var(--accent);
+}
+
+.hero p {
+  margin:0;
+  color:var(--muted);
+  font-size:18px;
+  line-height:1.7;
+}
+
+.hero-actions {
+  display:flex;
+  gap:14px;
+  flex-wrap:wrap;
+  margin-top:28px;
+}
+
+.hero-actions a {
+  display:inline-block;
+  padding:12px 18px;
+  border-radius:10px;
+  text-decoration:none;
+  transition:0.25s;
+}
+
+.hero-actions a:hover {
+  transform:translateY(-2px);
+}
+
+.btn-main {
+  background:linear-gradient(135deg, var(--accent), var(--accent-2));
+  color:#03111c;
+  font-weight:700;
+}
+
+.btn-ghost {
+  border:1px solid rgba(148,169,201,0.18);
+  color:var(--text);
+  background:rgba(255,255,255,0.03);
+}
+
+.hero-right {
+  display:flex;
+  justify-content:center;
+}
+
+.hero-card {
+  width:min(100%, 360px);
+  background:linear-gradient(180deg, rgba(19,43,69,0.95), rgba(12,25,42,0.95));
+  border:1px solid var(--line);
+  border-radius:28px;
+  padding:22px;
+  box-shadow:var(--shadow);
+}
+
+.hero-card img {
+  width:100%;
+  border-radius:20px;
+  display:block;
+  box-shadow:0 0 30px rgba(56,189,248,0.16);
+}
+
+.hero-card p {
+  margin:16px 0 0;
+  color:var(--muted);
+  text-align:center;
+}
+
+.section {
+  max-width:1150px;
+  margin:auto;
+  padding:0 40px 36px;
+}
+
+.section-box {
+  background:linear-gradient(180deg, rgba(16,35,58,0.90), rgba(12,26,42,0.94));
+  border:1px solid var(--line);
+  border-radius:24px;
+  padding:28px;
+  box-shadow:var(--shadow);
+}
+
+.section-box h2 {
+  margin-top:0;
+  margin-bottom:14px;
+  color:var(--accent);
+  font-size:30px;
+}
+
+.section-box p {
+  color:var(--muted);
+  line-height:1.8;
+}
+
+.skills {
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+}
+
+.skill {
+  background:rgba(56,189,248,0.08);
+  color:#c6ebff;
+  padding:10px 14px;
+  border-radius:999px;
+  border:1px solid rgba(56,189,248,0.15);
+  font-size:14px;
+}
+
+.project-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:20px;
+}
+
+.card {
+  background:linear-gradient(180deg, rgba(19,43,69,0.85), rgba(13,27,46,0.95));
+  border:1px solid var(--line);
+  padding:22px;
+  border-radius:18px;
+  transition:0.3s;
+}
+
+.card:hover {
+  transform:translateY(-6px);
+  border-color:rgba(56,189,248,0.28);
+}
+
+.card h3 {
+  margin-top:0;
+  margin-bottom:10px;
+  color:#f3f8ff;
+}
+
+.card p {
+  margin-bottom:18px;
+}
+
+.project-btn {
+  display:inline-block;
+  padding:8px 14px;
+  margin-right:8px;
+  border-radius:8px;
+  text-decoration:none;
+  font-size:13px;
+  transition:0.2s;
+}
+
+.project-btn:hover {
+  transform:scale(1.06);
+}
+
+.live {
+  background:var(--success);
+  color:white;
+}
+
+.code {
+  background:#24364a;
+  color:white;
+}
+
+.contact-lines p {
+  margin:8px 0;
+}
+
+.links {
+  margin-top:16px;
+}
+
+.links a {
+  display:inline-block;
+  background:linear-gradient(135deg, var(--accent), var(--accent-2));
+  color:#03111c;
+  padding:8px 14px;
+  border-radius:8px;
+  text-decoration:none;
+  margin-right:10px;
+  font-weight:600;
+}
+
+.reveal {
+  opacity:0;
+  transform:translateY(50px);
+  transition:all 0.8s ease;
+}
+
+.reveal.active {
+  opacity:1;
+  transform:translateY(0);
+}
+
+@media (max-width:900px) {
+  .hero {
+    grid-template-columns:1fr;
+    text-align:center;
+    padding:120px 20px 60px;
+  }
+
+  .hero-left {
+    max-width:none;
+  }
+
+  .hero-actions {
+    justify-content:center;
+  }
+
+  .section {
+    padding:0 20px 24px;
+  }
+
+  nav {
+    padding:14px 18px;
+  }
+
+  nav div {
+    gap:14px;
+  }
+
+  .hero h1 {
+    font-size:42px;
+  }
+}
+
+@media (max-width:600px) {
+  nav {
+    flex-direction:column;
+    gap:10px;
+  }
+
+  nav h2 {
+    margin:0;
+  }
+
+  .hero {
+    padding-top:150px;
+  }
+
+  .hero h1 {
+    font-size:34px;
+  }
+
+  .section-box {
+    padding:22px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="center-box" id="loginPage">
+  <div class="container">
+    <h2>Login</h2>
+    <input type="email" id="email" placeholder="Enter Email">
+    <input type="text" id="phone" placeholder="Enter Phone">
+    <button onclick="login()">Login</button>
+    <p id="error" style="color:#f87171;text-align:center;"></p>
+  </div>
+</div>
+
+<div id="portfolioPage" class="hidden">
+
+<nav>
+  <h2>MyPortfolio</h2>
+  <div>
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<section class="hero" id="home">
+  <div class="hero-left">
+    <div class="hero-tag">Portfolio Website</div>
+    <h1>Hi, I'm <span>Jithu George</span></h1>
+    <p>Building real skills, creating real projects, and growing into a strong developer with every step.</p>
+    <div class="hero-actions">
+      <a href="#projects" class="btn-main">View Projects</a>
+      <a href="#contact" class="btn-ghost">Contact Me</a>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="hero-card">
+      <img src="pic5.jpeg" alt="My Photo">
+      <p>Focused on clean code, useful products, and steady improvement.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section reveal" id="about">
+  <div class="section-box">
+    <h2>About Me</h2>
+    <p>CSE student focused on building real skills through consistent practice and projects.  
+Driven to become a strong developer and create a better future through discipline and hard work..</p>
+  </div>
+</section>
+
+<section class="section reveal" id="skills">
+  <div class="section-box">
+    <h2>Skills</h2>
+    <div class="skills">
+      <span class="skill">Python</span>
+      <span class="skill">networking</span>
+      <span class="skill">HTML</span>
+      <span class="skill">CSS</span>
+      <span class="skill">JavaScript</span>
+    </div>
+  </div>
+</section>
+
+<section class="section reveal" id="projects">
+  <div class="section-box">
+    <h2>Projects</h2>
+    <div class="project-grid">
+      <div class="card">
+        <h3>MARK CALCULATOR</h3>
+        <p>A website that calculates marks of 3 subjects and gives analysis.</p>
+        <a href="https://j-codexx.github.io/mark-calculator/" target="_blank" class="project-btn live">Live</a>
+        <a href="https://github.com/J-CODEXX/mark-calculator" target="_blank" class="project-btn code">Code</a>
+      </div>
+
+      <div class="card">
+        <h3>AGE CALCULATOR</h3>
+        <p>a simple age calculator using html,css and javascript.</p>
+        <a href="https://j-codexx.github.io/age-calculator/" target="_blank" class="project-btn live">Live</a>
+        <a href="https://github.com/J-CODEXX/age-calculator" target="_blank" class="project-btn code">Code</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section reveal" id="contact">
+  <div class="section-box contact-lines">
+    <h2>Contact</h2>
+    <p>Email: georgejithu262@gmail.com</p>
+    <p>Phone: 8156878890</p>
+    <div class="links">
+      <a href="https://www.linkedin.com/in/jithu-george-587042389/" target="_blank">LinkedIn</a>
+      <a href="https://github.com/J-CODEXX" target="_blank">GitHub</a>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<script>
+function login() {
+  let email = document.getElementById('email').value;
+  let phone = document.getElementById('phone').value;
+  let error = document.getElementById('error');
+
+  let emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+  let phonePattern = /^[0-9]{10}$/;
+
+  if (!email.match(emailPattern)) {
+    error.innerText = "Invalid Email";
+    return;
+  }
+  if (!phone.match(phonePattern)) {
+    error.innerText = "Invalid Phone";
+    return;
+  }
+
+  error.innerText = "";
+  document.getElementById('loginPage').classList.add('hidden');
+  document.getElementById('portfolioPage').classList.remove('hidden');
+  revealOnScroll();
+}
+
+function revealOnScroll() {
+  let reveals = document.querySelectorAll(".reveal");
+
+  reveals.forEach((el) => {
+    let windowHeight = window.innerHeight;
+    let elementTop = el.getBoundingClientRect().top;
+
+    if (elementTop < windowHeight - 100) {
+      el.classList.add("active");
+    }
+  });
+}
+
+window.addEventListener("scroll", revealOnScroll);
+</script>
+
+</body>
+</html>
